@@ -16,7 +16,7 @@ app.post('/api/upload', (req, res) => {
     if (apiKey) {
         images[apiKey] = image; // Store image base64 by apiKey
         res.status(200).send('Image uploaded successfully');
-        console.log("image is update for apikey: " + apiKey)
+        console.log("Image is updated for apikey: " + apiKey)
     } else {
         res.status(400).send('Invalid API key');
     }

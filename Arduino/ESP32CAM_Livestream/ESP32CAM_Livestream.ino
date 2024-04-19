@@ -2,14 +2,17 @@
 #include "base64.h"
 #include <HTTPClient.h>
 #include <WiFi.h>
-
 // Replace with your camera model and pins
 #define CAMERA_MODEL_AI_THINKER
 #include "camera_pins.h"
 
+
 // Replace with your network credentials
-const char* ssid = "Minastik2";
-const char* password = "68686868";
+const char* ssid = "yourwifiname";
+const char* password = "yourwifipassword";
+const String yourKey = "khoemach";
+const String yourServerUrl = "http://sanslab.ddns.net:5005/api/upload";
+
 
 void setup() {
   delay(500);
@@ -52,10 +55,9 @@ void setup() {
   config.frame_size = FRAMESIZE_UXGA;
   config.jpeg_quality = 12;
   config.fb_count = 1;
-  config.fli
 
   // Initialize the camera
-  esp_err_t err = esp_camera_init(&config);
+  esp_err_t err = esp_camera_init(&config); 
   if (err != ESP_OK) {
     Serial.printf("Camera init failed with error 0x%x", err);
     return;
@@ -74,11 +76,11 @@ void loop() {
   String base64_image = base64::encode((uint8_t *)fb->buf, fb->len);
 
   // Create JSON body
-  String body = "{\"apiKey\":\"khoemach\",\"image\":\"" + base64_image + "\"}";
+  String body = "{\"apiKey\":\"" +yourKey+"\",\"image\":\"" + base64_image + "\"}";
 
   // Send POST request
   HTTPClient http;
-  http.begin("http://sanslab.viewdns.net:5005/api/upload");
+  http.begin(yourServerUrl);
   http.addHeader("Content-Type", "application/json");
   int httpResponseCode = http.POST(body);
 

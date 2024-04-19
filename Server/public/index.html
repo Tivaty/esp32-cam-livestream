@@ -32,15 +32,17 @@
     </div>
     
     <script>
+        const serverUrl = 'http://sanslab.viewdns.net:5005/api/image/khoemach';
+
         let rotation = 0;
         document.getElementById('rotate').addEventListener('click', function() {
             rotation += 90;
             document.getElementById('image').style.transform = 'rotate(' + rotation + 'deg)';
         });
 
-        function fetchImage(){
+        function fetchImage(serverUrl){
             // Replace 'clientid' with the actual client ID
-            fetch('http://sanslab.viewdns.net:5005/api/image/khoemach')
+            fetch()
                 .then(response => response.text())
                 .then(data => {
                     const imgElement = document.getElementById('image');
