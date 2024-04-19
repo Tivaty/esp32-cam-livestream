@@ -11,7 +11,7 @@
 const char* ssid = "yourwifiname";
 const char* password = "yourwifipassword";
 const String yourKey = "khoemach";
-const String yourServerUrl = "http://sanslab.ddns.net:5005/api/upload";
+const String yourServerUrl = "<your server address>/api/upload";
 
 
 void setup() {
