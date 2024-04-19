@@ -40,9 +40,9 @@
             document.getElementById('image').style.transform = 'rotate(' + rotation + 'deg)';
         });
 
-        function fetchImage(serverUrl){
+        function fetchImage(){
             // Replace 'clientid' with the actual client ID
-            fetch()
+            fetch(serverUrl)
                 .then(response => response.text())
                 .then(data => {
                     const imgElement = document.getElementById('image');
